@@ -33,8 +33,8 @@ class AlbumList extends Component {
     renderAlbums() {
         // transform each of the objects into a component (AlbumDetail)
         return this.state.albums.map(album =>
-            // pass down this map as a 'prop' called "album"
-            <AlbumDetail key={album.title} album={album}/>
+            // pass down this "album" as a prop to AlbumDetail: syntax propname={variabletobepasseddown}
+            <AlbumDetail key={album.title} album={album} />
         );
     }
 

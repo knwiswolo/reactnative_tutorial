@@ -1,17 +1,87 @@
 // Import necessary libraries
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Image, Button } from 'react-native';
+import Card from './Card';
+import CardSection from './CardSection';
 
 // Create Component - functional component (because presentational)
-const AlbumDetail = (props) => {
+const AlbumDetail = ({album}) => { // destructured the property from the argument of 'props'.
+    const { title, artist, thumbnail_image, image } = album;
+    const { 
+        headerContentStyle, 
+        thumbnailStyle ,
+        thumbnailContainerStyle,
+        albumTitleStyle,
+        albumCoverStyle,
+        buttonStyle
+    } = styles; // destructuring 'styles' as it's been made reference to more than once - optional refactor.
+
     return (
-        <View>
-            {/* recieve "props" that is passed down from AlbumList */}
-            <Text>{props.album.title}</Text> 
-        </View>
+        <Card>
+            <CardSection>
+                <View style={thumbnailContainerStyle}>
+                    <Image 
+                     style={thumbnailStyle}
+                     source={{ uri: thumbnail_image }}
+                    />
+                </View>
+                <View style={headerContentStyle}>
+                    <Text style={albumTitleStyle}>{title}</Text>
+                    <Text>{artist}</Text>
+                </View>
+            </CardSection>
+            <CardSection>
+                <Image
+                    style={albumCoverStyle}
+                    source={{ uri: image }}
+                />
+            </CardSection>
+            <CardSection>
+                <Button
+                    onPress={onPressBuy}
+                    title="Buy"
+                    style={buttonStyle}
+                />
+            </CardSection>
+        </Card>
     );
 }
 
+const onPressBuy = () => {
+    return (
+        console.log("Album Purchaced!")
+    );
+};
+
+const styles = {
+    headerContentStyle: {
+        flexDirection: 'column', // vertical arrangement (y-axis)
+        justifyContent: 'space-around' // content justification about the y-axis
+    },
+    albumTitleStyle: {
+        fontSize: 18
+    },
+    thumbnailStyle: {
+        height: 50,
+        width: 50
+    },
+    thumbnailContainerStyle: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginLeft: 10,
+        marginRight: 10
+    },
+    albumCoverStyle: {
+        height: 300,
+        flex: 1, // helps image stretch the entire assigned width of the screen (with 'width: null')
+        width: null
+    },
+    buttonStyle: {
+        justifyContent: 'center',
+        alignItems: 'centre',
+        color: 'blue'
+    }
+}
 
 // Make it available to other component in app
 export default AlbumDetail
