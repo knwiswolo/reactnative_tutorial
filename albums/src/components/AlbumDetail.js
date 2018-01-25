@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { View, Text, Image, Button } from 'react-native';
 import Card from './Card';
 import CardSection from './CardSection';
+import Button from './Button';
 
 // Create Component - functional component (because presentational)
 const AlbumDetail = ({album}) => { // destructured the property from the argument of 'props'.
@@ -13,7 +14,6 @@ const AlbumDetail = ({album}) => { // destructured the property from the argumen
         thumbnailContainerStyle,
         albumTitleStyle,
         albumCoverStyle,
-        buttonStyle
     } = styles; // destructuring 'styles' as it's been made reference to more than once - optional refactor.
 
     return (
@@ -30,18 +30,16 @@ const AlbumDetail = ({album}) => { // destructured the property from the argumen
                     <Text>{artist}</Text>
                 </View>
             </CardSection>
+
             <CardSection>
                 <Image
                     style={albumCoverStyle}
                     source={{ uri: image }}
                 />
             </CardSection>
+
             <CardSection>
-                <Button
-                    onPress={onPressBuy}
-                    title="Buy"
-                    style={buttonStyle}
-                />
+                <Button />
             </CardSection>
         </Card>
     );
@@ -75,11 +73,6 @@ const styles = {
         height: 300,
         flex: 1, // helps image stretch the entire assigned width of the screen (with 'width: null')
         width: null
-    },
-    buttonStyle: {
-        justifyContent: 'center',
-        alignItems: 'centre',
-        color: 'blue'
     }
 }
 

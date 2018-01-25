@@ -7,7 +7,7 @@ import AlbumList from './src/components/AlbumList'; // import child component - 
 // Create a component
 const App = () => {
     return (
-        <View>
+        <View style={{ flex: 1 }}>
             {/* //<Text>Some Text</Text> //JSX = a dialect of JavaScript: a way to communicate with React Native
             // Provide the "headerText" prop expected by the child (Header) component: headerText={'Albums'}  */}
             <Header headerText={'Albums'}/>

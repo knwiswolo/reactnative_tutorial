@@ -1,6 +1,6 @@
 // Import necessary Libraries
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { ScrollView } from 'react-native';
 import axios from 'axios';
 import AlbumDetail from './AlbumDetail';
 
@@ -43,10 +43,10 @@ class AlbumList extends Component {
         console.log(this.state);
 
         return (
-            <View>
+            <ScrollView>
                 {/* // render list of Albums */}
                 {this.renderAlbums()}
-            </View>
+            </ScrollView>
         );
     };
 } // no semi-colon on the end of classes!!
